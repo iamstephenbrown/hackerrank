@@ -36,10 +36,11 @@ struct MinHeap {
     }
     
     // traversal
-    private func indexOf(_ value: Int) -> Int? {return values.firstIndex(of: value)
+    private func indexOf(_ value: Int) -> Int? {
+        return values.firstIndex(of: value)
     }
     
-    private func leftChildIndex(ofIndex index: Int) -> Int{
+    private func leftChildIndex(ofIndex index: Int) -> Int {
         return (2 * index) + 1
     }
     
