@@ -10,8 +10,8 @@ struct MinHeap {
         return values.count - 1
     }
     
-    init(values: [Int]) {
-        self.values = values
+    init() {
+        values = []
     }
     
     mutating func add(_ value: Int) {
@@ -20,14 +20,13 @@ struct MinHeap {
     }
     
     mutating func remove(_ value: Int) {
-        guard let index = values.firstIndex(of: value) else {
+        guard let index = indexOf(value) else {
             return
         }
         
         if index != lastIndex {
             values[index] = values[lastIndex]
             sortDown(fromIndex: index)
-            sortUp(fromIndex: index)
         }
         values.removeLast()
     }
@@ -37,6 +36,9 @@ struct MinHeap {
     }
     
     // traversal
+    private func indexOf(_ value: Int) -> Int? {return values.firstIndex(of: value)
+    }
+    
     private func leftChildIndex(ofIndex index: Int) -> Int{
         return (2 * index) + 1
     }
@@ -93,7 +95,7 @@ func solve() {
         return
     }
 
-    var heap = MinHeap(values: [])
+    var heap = MinHeap()
     
     for _ in 0..<numberOfLines {
         guard let input = readLine(strippingNewline: true) else {
@@ -123,7 +125,7 @@ func solve() {
 solve()
 
 // Example
-var heap = MinHeap(values: [])
+var heap = MinHeap()
 
 heap.add(4)
 heap.add(9)
