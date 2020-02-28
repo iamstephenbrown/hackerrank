@@ -44,7 +44,7 @@ func twoStacksForwards(x: Int, aSums: [Int], bSums: [Int]) -> Int {
     return maxTurns
 }
 
-// better approach - go from the back of the array
+// better approach - go from the back of the array, when we hit a passin g value - it will be the answer for that a value
 func twoStacksBackwards(x: Int, aSums: [Int], bSums: [Int]) -> Int {
     var maxTurns = 0
     for aCounter in 1...aSums.count {
