@@ -24,6 +24,7 @@ class MergeSorter: Sorter {
         let leftCount = leftArray.count
         let rightCount = rightArray.count
         var orderedArray = [Int]()
+        orderedArray.reserveCapacity(leftCount + rightCount)
 
         while leftIndex < leftCount, rightIndex < rightCount {
             let left = leftArray[leftIndex]
