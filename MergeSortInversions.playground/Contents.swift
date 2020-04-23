@@ -47,7 +47,8 @@ class MergeSorter: Sorter {
         return orderedArray
     }
 }
- func countInversions(arr: [Int]) -> Int {
+
+func countInversions(arr: [Int]) -> Int {
     let sorter = MergeSorter()
     sorter.sort(arr: arr)
     return sorter.numInversions
