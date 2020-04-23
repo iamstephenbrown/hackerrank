@@ -8,17 +8,15 @@ func printNode(node: DoublyLinkedListNode?) {
     }
 }
 
-
 class DoublyLinkedListNode {
      var data: Int
      var next: DoublyLinkedListNode?
      var prev: DoublyLinkedListNode?
-    
+
     init(nodeData: Int) {
         self.data = nodeData
     }
 }
-
 
 func sortedInsert(llist head: DoublyLinkedListNode?, data: Int) -> DoublyLinkedListNode? {
     // empty?
@@ -34,8 +32,8 @@ func sortedInsert(llist head: DoublyLinkedListNode?, data: Int) -> DoublyLinkedL
         headNode.prev = node
         return node
     }
-    
-    var prev: DoublyLinkedListNode? = nil
+
+    var prev: DoublyLinkedListNode?
     var currentNode: DoublyLinkedListNode? = head
     while let current = currentNode?.next {
         currentNode = current
@@ -55,16 +53,16 @@ func sortedInsert(llist head: DoublyLinkedListNode?, data: Int) -> DoublyLinkedL
             return head
         }
     }
-    
+
     let node = DoublyLinkedListNode(nodeData: data)
     node.prev = currentNode
     currentNode?.next = node
     return head
 }
 
-var head: DoublyLinkedListNode? = nil
+var head: DoublyLinkedListNode?
 
-for i in [4,1,3,4,10,5] {
+for i in [4, 1, 3, 4, 10, 5] {
     head = sortedInsert(llist: head, data: i)
     printNode(node: head)
     print("\n")

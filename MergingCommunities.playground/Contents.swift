@@ -1,8 +1,8 @@
 class Community {
-    
+
     var id: [Int]
     var size: [Int]
-    
+
     init(numberOfPeople: Int) {
         id = []
         size = []
@@ -11,7 +11,7 @@ class Community {
             size.append(1)
         }
     }
-    
+
     func handle(_ inputCommand: [String]) {
         if inputCommand.count == 2, let community = Int(inputCommand[1]) {
             printSize(ofCommunity: community - 1)
@@ -21,11 +21,11 @@ class Community {
             // bad times
         }
     }
-    
+
     private func printSize(ofCommunity community: Int) {
         print(size[find(community)])
     }
-    
+
     private func merge(_ personA: Int, withPerson personB: Int) {
         let i = find(personA)
         let j = find(personB)
@@ -33,31 +33,31 @@ class Community {
             // communitues already merged
             return
         }
-        
+
         if size[i] < size[j] {
             // point the smaller comminity to the larger community
             id[i] = j
             // increase the size
             size[j] += size[i]
-            
+
             // flatten
-            
+
         } else {
             id[j] = i
             size[i] += size[j]
         }
     }
-    
+
     private func find(_ community: Int) -> Int {
         var p = community
         while p != id[p] {
             id[p] = id[id[p]]
             p = id[p]
         }
-        
+
         return p
     }
-    
+
     func splash() {
         print(id)
         print(size)
@@ -73,18 +73,17 @@ func solve() {
     else {
         return
     }
-    
+
     let community = Community(numberOfPeople: numberOfPeople)
-    
+
     for _ in 0..<numberOfQueries {
         guard let input = readLine(strippingNewline: true)?.split(separator: " ").map({ return String($0) }) else {
             continue
         }
-        
+
         community.handle(input)
     }
 }
-
 
 let community = Community(numberOfPeople: 6)
 community.splash()

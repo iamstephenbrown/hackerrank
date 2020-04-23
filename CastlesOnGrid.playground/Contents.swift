@@ -204,23 +204,17 @@ var queue = Queue<Point>()
 
 func minimumMoves(grid: [String], startX: Int, startY: Int, goalX: Int, goalY: Int) -> Int {
     var matrix = gridFromArray(grid)
-    
+
     var q = queue.dequeue()
-    
-    
+
     return 0
 }
-
-
-
 
 let grid = [
     ".X.",
     ".X.",
     "..."
 ]
-
-
 
 // 3
 minimumMoves(grid: grid, startX: 0, startY: 0, goalX: 0, goalY: 2)
@@ -231,7 +225,7 @@ let gridTwo = [
     ".X..",
     ".X..",
     "..X.",
-    "....",
+    "...."
 ]
 
 // 4
@@ -245,7 +239,7 @@ let gridThree = [
     "..X...",
     "......",
     "......",
-    "......",
+    "......"
 ]
 
 minimumMoves(grid: gridThree, startX: 0, startY: 0, goalX: 0, goalY: 2)

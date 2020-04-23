@@ -22,11 +22,11 @@ func calculate(from: [String], to: [String], tree: inout Tree) {
     if to.isEmpty == false {
         tree.add(to.sorted().joined(separator: ""))
     }
-    
+
     guard from.isEmpty == false else {
         return
     }
-    
+
     for item in from {
         calculate(
             from: from.filter({ $0 != item }),
@@ -37,11 +37,11 @@ func calculate(from: [String], to: [String], tree: inout Tree) {
 }
 
 func solve(s: String) -> [String] {
-    let strArray = s.map( { return String($0) })
-    
+    let strArray = s.map({ return String($0) })
+
     var tree = Tree()
     calculate(from: strArray, to: [], tree: &tree)
-    
+
     return tree.elements
 }
 

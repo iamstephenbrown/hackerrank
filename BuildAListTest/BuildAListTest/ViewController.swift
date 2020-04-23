@@ -10,8 +10,8 @@ import UIKit
 
 class Node {
     var value: Int
-    var next: Node? = nil
-    
+    var next: Node?
+
     init(value: Int) {
         self.value = value
     }
@@ -20,7 +20,7 @@ class Node {
 class NodeFactory {
     func build(_x: Int) -> Node {
         let node = Node(value: x)
-        
+
         return node
     }
 }
@@ -30,22 +30,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-    
-        
+
         mergeList()
     }
-    
+
     func mergeList() {
-        
+
     }
-    
+
     func buildList() {
         let startDate = Date().timeIntervalSince1970 * 1000
-        
+
         let string = "abcdefghi"
-        
+
         let result = Solver.solve(s: string)
-        
+
         let endDate = Date().timeIntervalSince1970 * 1000
         print(result)
         print("Seconds: \(endDate - startDate)")
@@ -56,11 +55,11 @@ func calculate(from: [String], to: [String], result: inout [String]) {
     if to.isEmpty == false {
         result.append(to.joined(separator: ""))
     }
-    
+
     guard from.isEmpty == false else {
         return
     }
-    
+
     for i in 0..<from.count {
         let nextIndex = i + 1
         let next = Array(from[nextIndex..<from.count])
@@ -70,12 +69,11 @@ func calculate(from: [String], to: [String], result: inout [String]) {
 
 class Solver {
     class func solve(s: String) -> [String] {
-        let strArray = s.map( { return String($0) })
-        
+        let strArray = s.map({ return String($0) })
+
         var result = [String]()
         calculate(from: strArray, to: [], result: &result)
-        
+
         return result
     }
 }
-

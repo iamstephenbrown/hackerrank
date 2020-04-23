@@ -10,11 +10,11 @@ func lights(n: Int) -> Int {
     var start = UInt64(exactly: 2)!
     let base = UInt64(exactly: 2)!
     let power = UInt64(exactly: n)!
-    
+
     for _ in 1..<power {
         start = (start * base) % 100000
     }
-    
+
     start -= 1
     return Int(start)
 }

@@ -11,14 +11,14 @@ func calculateSums(x: Int, array: [Int]) -> [Int] {
 func twoStacks(x: Int, a: [Int], b: [Int]) -> Int {
     let aSums = calculateSums(x: x, array: a)
     let bSums = calculateSums(x: x, array: b)
-    
+
     // does max work?
     if (aSums.count - 1) == a.count, (bSums.count - 1) == b.count {
         if (aSums[aSums.count - 1] + bSums[bSums.count - 1]) <= x {
             return aSums.count + bSums.count - 2
         }
     }
-    
+
     return twoStacksBackwards(x: x, aSums: aSums, bSums: bSums)
 }
 
@@ -28,7 +28,7 @@ func twoStacksForwards(x: Int, aSums: [Int], bSums: [Int]) -> Int {
     for aIndex in 0..<aSums.count {
         for bIndex in 0..<bSums.count {
             let total = aSums[aIndex] + bSums[bIndex]
-            
+
             if total <= x {
                 // continue with this until the end
                 let numTurns = aIndex + bIndex
@@ -40,7 +40,7 @@ func twoStacksForwards(x: Int, aSums: [Int], bSums: [Int]) -> Int {
             }
         }
     }
-        
+
     return maxTurns
 }
 
@@ -61,7 +61,7 @@ func twoStacksBackwards(x: Int, aSums: [Int], bSums: [Int]) -> Int {
             }
         }
     }
-    
+
     return maxTurns
 }
 

@@ -8,7 +8,7 @@ func countSubstrings(s: String, queries: [[Int]]) -> [Int] {
         let substring = String(s[leftIndex ... rightIndex])
         result.append(uniqueSubstringsTwo(in: substring))
     }
-    
+
     return result
 }
 
@@ -18,16 +18,13 @@ func uniqueSubstringsTwo(in s: String) -> Int {
     }
     let array = s.map({ return String($0) })
     var counter: [String: Int] = Dictionary(uniqueKeysWithValues: Set(array).lazy.map { ($0, 0) })
-    
+
     for char in array {
         counter[char] = counter[char]! + 1
     }
-    
-    
-    
+
     print(counter)
-    
-    
+
     return 0
 }
 
@@ -47,8 +44,8 @@ func uniqueSubstrings(in s: String) -> Int {
             combos.insert(substr)
         }
     }
-    
+
     return combos.count
 }
 
-print(countSubstrings(s: "aabaa", queries: [[1, 1], [1, 4], [1, 1], [1,4], [0, 2]]))
+print(countSubstrings(s: "aabaa", queries: [[1, 1], [1, 4], [1, 1], [1, 4], [0, 2]]))

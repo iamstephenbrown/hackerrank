@@ -3,7 +3,7 @@ import Foundation
 class SinglyLinkedListNode {
     var data: Int
     var next: SinglyLinkedListNode?
-    
+
     init(data: Int) {
         self.data = data
     }
@@ -22,10 +22,9 @@ func reverse(head: SinglyLinkedListNode?) -> SinglyLinkedListNode? {
         previous = current
         current = current?.next
     }
-    
+
     return reversed
 }
-
 
 let a = SinglyLinkedListNode(data: 0)
 let b = SinglyLinkedListNode(data: 1)

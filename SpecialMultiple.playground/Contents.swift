@@ -11,15 +11,15 @@ private func minCounter(n: Int) -> Int {
 // 9 = 9
 // 192 = 900000000
 func solve(n: Int) -> String {
-    
+
     var counter = 1
     var value = nextValue(counter)
-    
+
     while value % n != 0 {
         counter += 1
         value = nextValue(counter)
     }
-    
+
     return "\(value)"
 }
 

@@ -9,69 +9,69 @@ struct MinHeap {
     private var lastIndex: Int {
         return values.count - 1
     }
-    
+
     init() {
         values = []
     }
-    
+
     mutating func add(_ value: Int) {
         values.append(value)
         sortUp(fromIndex: lastIndex)
     }
-    
+
     mutating func remove(_ value: Int) {
         guard let index = indexOf(value) else {
             return
         }
-        
+
         if index != lastIndex {
             values[index] = values[lastIndex]
             sortDown(fromIndex: index)
         }
         values.removeLast()
     }
-    
+
     func printMinimum() {
         print(values[0])
     }
-    
+
     // traversal
     private func indexOf(_ value: Int) -> Int? {
         return values.firstIndex(of: value)
     }
-    
+
     private func leftChildIndex(ofIndex index: Int) -> Int {
         return (2 * index) + 1
     }
-    
+
     private func rightChildIndex(ofIndex index: Int) -> Int {
         return (2 * index) + 2
     }
-    
+
     private func parentIndex(ofIndex index: Int) -> Int {
         return (index - 1) / 2
     }
-    
+
     // ordering
     mutating private func sortUp(fromIndex index: Int) {
         var childIndex = index
         let child = values[index]
         var parentIndex = self.parentIndex(ofIndex: childIndex)
-        
+
         // while the current "child" node is smaller than it's parent, sort it up the heap
         while childIndex > 0, child < values[parentIndex] {
             values[childIndex] = values[parentIndex]
             childIndex = parentIndex
             parentIndex = self.parentIndex(ofIndex: childIndex)
         }
-        
+
         values[childIndex] = child
     }
-    
+
     mutating func sortDown(fromIndex index: Int) {
         let leftChildIndex = self.leftChildIndex(ofIndex: index)
         let rightChildIndex = self.rightChildIndex(ofIndex: index)
-        
+
         // find the smallest child of the supplied index
         var first = index
         if leftChildIndex < lastIndex, values[leftChildIndex] < values[first] {
@@ -80,11 +80,11 @@ struct MinHeap {
         if rightChildIndex < lastIndex, values[rightChildIndex] < values[first] {
             first = rightChildIndex
         }
-        
+
         guard first != index else {
             return
         }
-        
+
         // swap the smallest child, with the parent and continue
         values.swapAt(index, first)
         sortDown(fromIndex: first)
@@ -97,18 +97,18 @@ func solve() {
     }
 
     var heap = MinHeap()
-    
+
     for _ in 0..<numberOfLines {
         guard let input = readLine(strippingNewline: true) else {
             continue
         }
-        
+
         let elements = input.split(separator: " ").map({ return Int($0)! })
-        
+
         guard elements.count > 0, let instruction = Instruction(rawValue: elements[0]) else {
             return
         }
-        
+
         switch instruction {
         case .add:
             heap.add(elements[1])
